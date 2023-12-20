@@ -1,5 +1,6 @@
 package br.com.projeto.api.services;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,15 @@ public class ProductService {
 
 
         }
+        
+    }
+
+
+    public ResponseEntity<ResponseModel> remove (long id) {
+        pr.deleteById(id);
+
+        rm.setMessage("O produto foi removido com sucesso");
+        return new ResponseEntity<ResponseModel>(rm, HttpStatus.OK);
         
     }
  
